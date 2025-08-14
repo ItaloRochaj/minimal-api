@@ -1,25 +1,53 @@
-Perfeito! Aqui está um exemplo de **README.md** profissional e detalhado para o seu repositório `minimal-api`, considerando que até agora você configurou o ambiente e quer dar continuidade ao projeto:
+# 📋 Minimal API - Base .NET 9
 
-````markdown
-# Minimal API
-
-Este repositório contém um projeto **.NET Minimal API** criado para estudo e desenvolvimento de APIs leves, com configuração inicial pronta para expansão, integração com **Entity Framework Core** e suporte a banco de dados MySQL via **Pomelo.EntityFrameworkCore.MySql**.
-
----
-
-## 🔧 Tecnologias e Ferramentas
-
-- **.NET 9** - Plataforma principal do projeto
-- **C#** - Linguagem de programação
-- **Entity Framework Core 9** - ORM para manipulação do banco de dados
-- **Pomelo.EntityFrameworkCore.MySql** - Provedor MySQL para EF Core
-- **MySQL** - Banco de dados relacional
-- **Visual Studio / VS Code** - IDEs recomendadas
-- **Postman / Insomnia** - Para teste de endpoints da API
+![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet)
+![Entity Framework](https://img.shields.io/badge/Entity%20Framework-Core%209.0-512BD4?style=for-the-badge&logo=nuget)
+![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
 ---
 
-## ⚙ Configuração do Ambiente
+## 🎯 Visão Geral
+
+Este repositório contém uma **API Minimal .NET 9** configurada para servir como base para desenvolvimento de projetos com:
+
+- **Entity Framework Core 9** (ORM)
+- **MySQL** via `Pomelo.EntityFrameworkCore.MySql`
+- **Suporte a Migrations** e **Tools EF Core**
+- Estrutura pronta para endpoints RESTful, autenticação e CRUD
+
+O projeto foi iniciado com a configuração de ambiente e pacotes essenciais, permitindo fácil expansão futura.
+
+---
+
+## ⚡ Funcionalidades Implementadas
+
+- ✅ **Configuração inicial do projeto .NET 9**
+- ✅ **Estrutura básica Minimal API** (`Program.cs`)
+- ✅ **DTO para Login** (`LoginDTO`)
+- ✅ **Endpoint POST /login** com validação simples
+- ✅ **Pacotes EF Core e MySQL configurados**
+- ✅ **Suporte a migrations** via EF Core Tools
+
+---
+
+## 🏗️ Estrutura do Projeto
+
+```
+
+minimal-api/
+├── Program.cs                # Configuração principal da API
+├── LoginDTO.cs               # DTO para autenticação
+├── DbContext.cs              # Configuração do Entity Framework Core
+├── Models/                   # Entidades do banco de dados
+├── Migrations/               # Migrations geradas pelo EF Core
+├── README.md                 # Documentação do projeto
+
+````
+
+---
+
+## 🛠️ Configuração do Ambiente
 
 1. **Clonar o repositório:**
 
@@ -28,7 +56,7 @@ git clone https://github.com/ItaloRochaj/minimal-api.git
 cd minimal-api
 ````
 
-2. **Instalar pacotes necessários:**
+2. **Instalar pacotes NuGet essenciais:**
 
 ```bash
 dotnet add package Microsoft.EntityFrameworkCore.Design
@@ -36,15 +64,13 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet add package Pomelo.EntityFrameworkCore.MySql
 ```
 
-3. **Verificar instalação do EF Core CLI (opcional, mas recomendado):**
+3. **Verificar EF Core CLI instalado:**
 
 ```bash
 dotnet ef --version
 ```
 
-4. **Configurar o banco de dados** (exemplo `MySQL`):
-
-* Ajuste a string de conexão no `DbContext`:
+4. **Configurar string de conexão MySQL no `DbContext`:**
 
 ```csharp
 optionsBuilder.UseMySql(
@@ -64,15 +90,12 @@ dotnet ef database update
 
 ## 🚀 Executando a API
 
-No diretório do projeto, execute:
-
 ```bash
 dotnet run
 ```
 
-* A API estará disponível em `http://localhost:5000` (ou na porta configurada pelo .NET).
-
-* Exemplo de endpoint inicial:
+* A API estará disponível em `http://localhost:5000`.
+* Teste o endpoint inicial:
 
 ```http
 POST /login
@@ -86,45 +109,35 @@ Content-Type: application/json
 
 ---
 
-## 🗂 Estrutura do Projeto
+## 🔧 Boas Práticas Implementadas
 
-```
-minimal-api/
-│
-├─ Program.cs           -> Configuração inicial da Minimal API
-├─ LoginDTO.cs          -> DTO para login
-├─ DbContext.cs         -> Configuração do EF Core (em desenvolvimento)
-├─ Models/              -> Entidades do banco de dados
-├─ Migrations/          -> Migrations geradas pelo EF Core
-└─ README.md
-```
+* ✅ **Minimal API**: configuração enxuta e moderna
+* ✅ **DTOs**: separação de dados de entrada
+* ✅ **Entity Framework Core**: ORM configurado para MySQL
+* ✅ **Migrations e Tools**: versionamento do banco
+* ✅ **Preparado para futuras camadas**: Services, Repositories e Auth JWT
 
 ---
 
-## 📌 Próximos Passos
+## 📈 Próximos Passos
 
-* Implementar **camadas de serviço e repositório** para melhor separação de responsabilidades.
-* Criar endpoints CRUD completos com **DTOs, validações e tratamento de erros**.
-* Adicionar **autenticação JWT** para proteção das rotas.
-* Configurar **Docker** para facilitar execução em qualquer ambiente.
-* Escrever **testes unitários e de integração** para garantir a qualidade do código.
-
----
-
-## 💡 Observações
-
-Este projeto serve como **base inicial** para desenvolvimento de APIs modernas em .NET, permitindo fácil escalabilidade e integração com bancos de dados relacionais.
+* Implementar **camadas de serviço e repositório** (arquitetura limpa)
+* Criar **endpoints CRUD completos** para entidades do sistema
+* Adicionar **autenticação JWT** para proteção de rotas
+* Configurar **Docker** para deploy consistente
+* Implementar **testes unitários e de integração**
 
 ---
 
 ## 👨🏻‍💻 Autor
 
 **Ítalo Rocha**
-- 🌐 GitHub: [@ItaloRochaj](https://github.com/ItaloRochaj)
-- 💼 LinkedIn: [https://www.linkedin.com/in/italorochaj/]
+
+* 🌐 GitHub: [@ItaloRochaj](https://github.com/ItaloRochaj)
+* 💼 LinkedIn: [https://www.linkedin.com/in/italorochaj/](https://www.linkedin.com/in/italorochaj/)
 
 ---
 
 ## 📄 Licença
 
-Este projeto esta sendo desenvolvido como parte do **Bootcamp Avanade - Back-end com .NET e IA**.
+Este projeto foi iniciado como **base de estudo e desenvolvimento** para APIs Minimal .NET 9 com EF Core e MySQL.

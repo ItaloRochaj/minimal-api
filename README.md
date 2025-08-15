@@ -213,8 +213,9 @@ minimal-api/
 A API possui documentação interativa completa através do Swagger UI, permitindo testar todos os endpoints diretamente no navegador:
 
 <div align="center">
-  <img src="https://github.com/ItaloRochaj/minimal-api/blob/main/assets/swaggergif.gif" alt="Swagger Demo" width="600"/>
+  <img src="https://raw.githubusercontent.com/ItaloRochaj/minimal-api/main/assets/swaggergif.gif" alt="Swagger Demo" width="600"/>
 </div>
+
 
 > **🔗 Acesso ao Swagger**: Após executar a aplicação, acesse `http://localhost:5218/swagger`
 

@@ -208,6 +208,21 @@ minimal-api/
 }
 ```
 
+### 📱 Interface Swagger em Ação
+
+A API possui documentação interativa completa através do Swagger UI, permitindo testar todos os endpoints diretamente no navegador:
+
+![Swagger Demo](assets/swagger-demo.gif)
+
+> **🔗 Acesso ao Swagger**: Após executar a aplicação, acesse `http://localhost:5218/swagger`
+
+**Funcionalidades do Swagger:**
+- ✅ **Documentação Automática** - Todos os endpoints documentados
+- ✅ **Teste Interativo** - Execute requests diretamente na interface
+- ✅ **Autenticação JWT** - Teste a autenticação com tokens
+- ✅ **Esquemas de Dados** - Visualize DTOs e modelos
+- ✅ **Códigos de Resposta** - Veja todos os status codes possíveis
+
 ## 🚀 Como Executar
 
 ### 📋 Pré-requisitos

@@ -216,8 +216,6 @@ A API possui documentação interativa completa através do Swagger UI, permitin
   <img src="https://github.com/ItaloRochaj/minimal-api/blob/main/assets/swaggergif.gif" alt="Swagger Demo" width="600"/>
 </div>
 
-
-
 > **🔗 Acesso ao Swagger**: Após executar a aplicação, acesse `http://localhost:5218/swagger`
 
 **Funcionalidades do Swagger:**

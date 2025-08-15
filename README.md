@@ -7,11 +7,11 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Swagger](https://img.shields.io/badge/Swagger-OpenAPI%203.0-brightgreen)](https://swagger.io/)
 
-> **Sistema completo de gerenciamento de veículos desenvolvido com ASP.NET Core 9.0 Minimal APIs, Entity Framework Core, autenticação JWT e Clean Architecture.**
+> **Sistema de gerenciamento de veículos desenvolvido com ASP.NET Core 9.0 Minimal APIs, Entity Framework Core, autenticação JWT e Clean Architecture.**
 
 ## 📋 Sobre o Projeto
 
-Esta API foi desenvolvida como um sistema robusto de gerenciamento de veículos, implementando as melhores práticas de desenvolvimento .NET com arquitetura limpa, autenticação segura e documentação completa. O projeto demonstra a implementação de uma API RESTful moderna utilizando Minimal APIs do ASP.NET Core 9.0.
+Esta API foi desenvolvida como parte do **Bootcamp Avanade - Back-end com .NET e IA** um sistema de gerenciamento de veículos, implementando as melhores práticas de desenvolvimento .NET com arquitetura limpa, autenticação segura e documentação completa. O projeto demonstra a implementação de uma API RESTful moderna utilizando Minimal APIs do ASP.NET Core 9.0.
 
 ### 🎯 Objetivo Principal
 Fornecer uma base sólida para sistemas de gerenciamento com funcionalidades completas de CRUD, autenticação JWT, autorização baseada em perfis e documentação interativa.
@@ -333,14 +333,18 @@ Este projeto possui documentação abrangente em arquivos específicos:
 - Hyundai HB20 2022
 - Volkswagen Polo 2023
 
-## 👨🏻‍💻 Autor
-
-**Ítalo Rocha**
-
-- 🌐 GitHub: [@ItaloRochaj](https://github.com/ItaloRochaj)
-- 💼 LinkedIn: [linkedin.com/in/italorochaj](https://www.linkedin.com/in/italorochaj/)
-
----
+### 👨🏻‍💻 Autor:
+<table style="border=0">
+  <tr>
+    <td align="left">
+      <a href="https://github.com/ItaloRochaj">
+        <span><b>Italo Rocha</b></span>
+      </a>
+      <br>
+      <span>Full-Stack Development</span>
+    </td>
+  </tr>
+</table>
 
 ## 📄 Licença
 

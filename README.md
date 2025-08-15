@@ -348,4 +348,4 @@ Este projeto possui documentação abrangente em arquivos específicos:
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT. É um projeto de estudo desenvolvido para demonstrar boas práticas em **APIs Minimal .NET 9** com autenticação JWT e Clean Architecture.
+Este de estudo desenvolvido para demonstrar boas práticas em **APIs Minimal .NET 9** com autenticação JWT e Clean Architecture.

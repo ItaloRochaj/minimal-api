@@ -1,49 +1,47 @@
-using System.Data.Common;
-using Microsoft.EntityFrameworkCore.Query;
-using Minimal.DTOs;
-using minimal_api.Dominio.Entidades;
-using minimal_api.Dominio.Interfaces;
-using minimal_api.Infra.Db;
+using MinimalApi.Dominio.Entidades;
+using MinimalApi.DTOs;
+using MinimalApi.Infraestrutura.Db;
+using MinimalApi.Dominio.Interfaces;
 
-namespace minimal_api.Dominio.Servicos
+namespace MinimalApi.Dominio.Servicos;
+
+public class AdministradorServico : IAdministradorServico
 {
-    public class AdministradorServico : IAdministradorServico
+    private readonly DbContexto _contexto;
+
+    public AdministradorServico(DbContexto contexto)
     {
-        private readonly DbContexto _contexto;
-        public AdministradorServico(DbContexto contexto)
-        {
-            _contexto = contexto;
-        }
+        _contexto = contexto;
+    }
 
-        public Administrador? BuscaPorId(int id)
-        {
-            return _contexto.Administradores.Where(v => v.Id == id).FirstOrDefault();
-        }
+    public Administrador? BuscaPorId(int id)
+    {
+        return _contexto.Administradores.Where(v => v.Id == id).FirstOrDefault();
+    }
 
-        public Administrador Incluir(Administrador administrador)
-        {
-            _contexto.Administradores.Add(administrador);
-            _contexto.SaveChanges();
+    public Administrador Incluir(Administrador administrador)
+    {
+        _contexto.Administradores.Add(administrador);
+        _contexto.SaveChanges();
 
-            return administrador;
-        }
+        return administrador;
+    }
 
-        public Administrador? Login(LoginDTO loginDTO)
-        {
-            var adm = _contexto.Administradores.Where(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha).FirstOrDefault();
-            return adm;
-        }
+    public Administrador? Login(LoginDTO loginDTO)
+    {
+        var adm = _contexto.Administradores.Where(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha).FirstOrDefault();
+        return adm;
+    }
 
-        public List<Administrador> Todos(int? pagina)
-        {
-            var query = _contexto.Administradores.AsQueryable();
+    public List<Administrador> Todos(int? pagina)
+    {
+        var query = _contexto.Administradores.AsQueryable();
 
-            int itensPorPagina = 10;
+        int itensPorPagina = 10;
 
-            if (pagina != null)
-                query = query.Skip(((int)pagina - 1) * itensPorPagina).Take(itensPorPagina);
+        if (pagina != null)
+            query = query.Skip(((int)pagina - 1) * itensPorPagina).Take(itensPorPagina);
 
-            return query.ToList();
-        }
+        return query.ToList();
     }
 }

@@ -1,143 +1,196 @@
-# 📋 Minimal API - Base .NET 9
+# 📋 Minimal API - Sistema de Gerenciamento de Veículos
 
 ![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet)
 ![Entity Framework](https://img.shields.io/badge/Entity%20Framework-Core%209.0-512BD4?style=for-the-badge&logo=nuget)
 ![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql)
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens)
 
 ---
 
 ## 🎯 Visão Geral
 
-Este repositório contém uma **API Minimal .NET 9** configurada para servir como base para desenvolvimento de projetos com:
+Este projeto é uma **API Minimal .NET 9** para gerenciamento de veículos e administradores com:
 
-- **Entity Framework Core 9** (ORM)
-- **MySQL** via `Pomelo.EntityFrameworkCore.MySql`
+- **Autenticação JWT**: Sistema de login com tokens JWT
+- **Entity Framework Core 9** (ORM) com MySQL
+- **Autorização por Roles**: Controle de acesso baseado em perfis (Adm, Editor)
 - **Suporte a Migrations** e **Tools EF Core**
-- Estrutura pronta para endpoints RESTful, autenticação e CRUD
+- **Documentação Swagger**: API documentada automaticamente
+- **Clean Architecture**: Organizado em camadas (Dominio, Infraestrutura)
 
-O projeto foi iniciado com a configuração de ambiente e pacotes essenciais, permitindo fácil expansão futura.
+## 🚀 Funcionalidades
 
----
-
-## ⚡ Funcionalidades Implementadas
-
-- ✅ **Configuração inicial do projeto .NET 9**
-- ✅ **Estrutura básica Minimal API** (`Program.cs`)
-- ✅ **DTO para Login** (`LoginDTO`)
-- ✅ **Endpoint POST /login** com validação simples
-- ✅ **Pacotes EF Core e MySQL configurados**
-- ✅ **Suporte a migrations** via EF Core Tools
+- ✅ **Gerenciamento de Administradores**: CRUD completo de administradores
+- ✅ **Gerenciamento de Veículos**: CRUD completo de veículos
+- ✅ **Sistema de Autenticação**: Login com JWT
+- ✅ **Controle de Acesso**: Autorização baseada em perfis
+- ✅ **Swagger UI**: Documentação interativa
+- ✅ **Seed Data**: Usuário administrador padrão
 
 ---
 
 ## 🏗️ Estrutura do Projeto
 
 ```
-
 minimal-api/
-├── Program.cs                # Configuração principal da API
-├── LoginDTO.cs               # DTO para autenticação
-├── DbContext.cs              # Configuração do Entity Framework Core
-├── Models/                   # Entidades do banco de dados
-├── Migrations/               # Migrations geradas pelo EF Core
-├── README.md                 # Documentação do projeto
-
-````
+├── Dominio/
+│   ├── DTOs/           # Data Transfer Objects
+│   ├── Entidades/      # Modelos de entidade (Administrador, Veiculo)
+│   ├── Enuns/          # Enumerações (Perfil)
+│   ├── Interfaces/     # Interfaces de serviços
+│   ├── ModelViews/     # ViewModels para retorno
+│   ├── Servicos/       # Implementação dos serviços
+│   └── Validacoes/     # Validações customizadas
+├── Infra/
+│   └── Db/             # Contexto do banco de dados
+├── Migrations/         # Migrações do EF Core
+├── Scripts/            # Scripts auxiliares
+├── Program.cs          # Ponto de entrada da aplicação
+├── Startup.cs          # Configuração da aplicação
+└── appsettings.json    # Configurações (DB, JWT)
+```
 
 ---
 
 ## 🛠️ Configuração do Ambiente
 
-1. **Clonar o repositório:**
+### 1. **Clonar o repositório:**
 
 ```bash
-git clone https://github.com/ItaloRochaj/minimal-api.git
+git clone https://github.com/seu-usuario/minimal-api.git
 cd minimal-api
-````
-
-2. **Instalar pacotes NuGet essenciais:**
-
-```bash
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.EntityFrameworkCore.Tools
-dotnet add package Pomelo.EntityFrameworkCore.MySql
 ```
 
-3. **Verificar EF Core CLI instalado:**
+### 2. **Restaurar pacotes:**
 
 ```bash
-dotnet ef --version
+dotnet restore
 ```
 
-4. **Configurar string de conexão MySQL no `DbContext`:**
+### 3. **Configurar Banco de Dados:**
 
-```csharp
-optionsBuilder.UseMySql(
-    "server=localhost;database=meubanco;user=root;password=123456",
-    new MySqlServerVersion(new Version(8, 0, 33))
-);
+Configure a string de conexão no `appsettings.json`:
+
+```json
+{
+  "ConnectionStrings": {
+    "MySql": "Server=localhost;Database=minimal_api;Uid=developer;Pwd=Luke@2020;"
+  },
+  "Jwt": "mais-cade-o-bolo-daqui-o-rato_carrego"
+}
 ```
 
-5. **Criar migrations iniciais:**
+### 4. **Executar Migrações:**
 
 ```bash
-dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
+### 5. **Executar a aplicação:**
+
+```bash
+dotnet run
+A API estará disponível em:
+- **HTTP**: http://localhost:5000
+- **HTTPS**: https://localhost:5001
+- **Swagger**: http://localhost:5000/swagger
+
 ---
 
-## 🚀 Executando a API
+## 📋 Endpoints Disponíveis
 
+### Home
+- `GET /` - Página inicial da API
+
+### Administradores
+- `POST /administradores/login` - Login do administrador
+- `GET /administradores` - Lista administradores (requer auth Adm)
+- `GET /administradores/{id}` - Busca administrador por ID (requer auth Adm)
+- `POST /administradores` - Cria novo administrador (requer auth Adm)
+
+### Veículos
+- `GET /veiculos` - Lista veículos (requer autenticação)
+- `GET /veiculos/{id}` - Busca veículo por ID (requer auth Adm/Editor)
+- `POST /veiculos` - Cria novo veículo (requer auth Adm/Editor)
+- `PUT /veiculos/{id}` - Atualiza veículo (requer auth Adm)
+- `DELETE /veiculos/{id}` - Remove veículo (requer auth Adm)
+
+---
+
+## 👤 Usuário Padrão
+
+O sistema cria automaticamente um administrador:
+- **Email**: administrador@teste.com
+- **Senha**: 123456
+- **Perfil**: Adm
+
+---
+
+## 🔐 Perfis de Usuário
+
+- **Adm**: Acesso completo ao sistema
+- **Editor**: Pode visualizar e criar veículos
+
+---
+
+## 🧪 Como Testar
+
+1. **Execute a aplicação**:
 ```bash
 dotnet run
 ```
 
-* A API estará disponível em `http://localhost:5000`.
-* Teste o endpoint inicial:
+2. **Acesse o Swagger**: http://localhost:5000/swagger
 
-```http
-POST /login
-Content-Type: application/json
-
+3. **Faça login**:
+```json
+POST /administradores/login
 {
-  "email": "adm@teste.com",
+  "email": "administrador@teste.com",
   "senha": "123456"
 }
 ```
 
----
+4. **Copie o token retornado** e use no botão "Authorize" do Swagger
 
-## 🔧 Boas Práticas Implementadas
-
-* ✅ **Minimal API**: configuração enxuta e moderna
-* ✅ **DTOs**: separação de dados de entrada
-* ✅ **Entity Framework Core**: ORM configurado para MySQL
-* ✅ **Migrations e Tools**: versionamento do banco
-* ✅ **Preparado para futuras camadas**: Services, Repositories e Auth JWT
+5. **Teste os endpoints** de veículos e administradores
 
 ---
 
-## 📈 Próximos Passos
+## 🔧 Tecnologias e Pacotes
 
-* Implementar **camadas de serviço e repositório** (arquitetura limpa)
-* Criar **endpoints CRUD completos** para entidades do sistema
-* Adicionar **autenticação JWT** para proteção de rotas
-* Configurar **Docker** para deploy consistente
-* Implementar **testes unitários e de integração**
-
----
-
-## 👨🏻‍💻 Autor
-
-**Ítalo Rocha**
-
-* 🌐 GitHub: [@ItaloRochaj](https://github.com/ItaloRochaj)
-* 💼 LinkedIn: [https://www.linkedin.com/in/italorochaj/](https://www.linkedin.com/in/italorochaj/)
+- **ASP.NET Core 9.0**: Framework web moderno
+- **Entity Framework Core 9.0**: ORM para acesso a dados  
+- **Pomelo.EntityFrameworkCore.MySql 9.0**: Provider MySQL
+- **Microsoft.AspNetCore.Authentication.JwtBearer**: Autenticação JWT
+- **System.IdentityModel.Tokens.Jwt**: Geração de tokens
+- **Swashbuckle.AspNetCore**: Documentação Swagger
 
 ---
 
-## 📄 Licença
+## � Próximos Passos
 
-Este projeto foi iniciado como **base de estudo e desenvolvimento** para APIs Minimal .NET 9 com EF Core e MySQL.
+Para expandir este projeto, considere implementar:
+
+- Docker containerization
+- Testes unitários e de integração  
+- Logging estruturado (Serilog)
+- Rate limiting
+- Versionamento de API
+- Monitoramento e métricas
+- Deploy automatizado (CI/CD)
+
+---
+
+## � Licença
+
+Este projeto está sob a licença MIT. Para mais detalhes, consulte a documentação.
+
+---
+
+## 👨‍� Desenvolvedor
+
+**Desenvolvido como sistema completo de gerenciamento com ASP.NET Core Minimal API**
+
+Para dúvidas ou sugestões, abra uma issue no repositório.

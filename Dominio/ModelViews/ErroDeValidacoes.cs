@@ -1,8 +1,6 @@
-using System.Collections.Generic;
+namespace MinimalApi.Dominio.ModelViews;
 
-namespace minimal_api.Dominio.ModelViews;
-
-public struct ErroDeValidacoes
+public struct ErrosDeValidacao
 {
     public List<string> Mensagens { get; set; }
 }

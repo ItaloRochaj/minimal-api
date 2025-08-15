@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using minimal_api.Infra.Db;
+using MinimalApi.Infraestrutura.Db;
 
 #nullable disable
 
@@ -21,7 +21,7 @@ namespace minimal_api.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("minimal_api.Dominio.Entidades.Administrador", b =>
+            modelBuilder.Entity("MinimalApi.Dominio.Entidades.Administrador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,12 +53,12 @@ namespace minimal_api.Migrations
                         {
                             Id = 1,
                             Email = "administrador@teste.com",
-                            Perfil = "Admin",
+                            Perfil = "Adm",
                             Senha = "123456"
                         });
                 });
 
-            modelBuilder.Entity("minimal_api.Dominio.Entidades.Veiculo", b =>
+            modelBuilder.Entity("MinimalApi.Dominio.Entidades.Veiculo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,6 +82,43 @@ namespace minimal_api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Veiculos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Ano = 2022,
+                            Marca = "Honda",
+                            Nome = "Civic"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Ano = 2023,
+                            Marca = "Toyota",
+                            Nome = "Corolla"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Ano = 2021,
+                            Marca = "Chevrolet",
+                            Nome = "Onix"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Ano = 2022,
+                            Marca = "Hyundai",
+                            Nome = "HB20"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Ano = 2023,
+                            Marca = "Volkswagen",
+                            Nome = "Polo"
+                        });
                 });
 #pragma warning restore 612, 618
         }

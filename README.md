@@ -317,33 +317,6 @@ dotnet run
 - ✅ **Configuração Externa** - Settings em arquivos de configuração
 - ✅ **Logging Estruturado** - Rastreabilidade de operações
 
-## 📚 Documentação Adicional
-
-Este projeto possui documentação abrangente em arquivos específicos:
-
-- 📋 **[TESTE-API.md](TESTE-API.md)** - Guia completo para testar a API
-- 🔧 **[CORRECAO-JWT.md](CORRECAO-JWT.md)** - Detalhes das correções de autenticação
-- 🚗 **[TESTE-COM-DADOS.md](TESTE-COM-DADOS.md)** - Como testar com dados reais
-- 🛠️ **[DESENVOLVIMENTO.md](DESENVOLVIMENTO.md)** - Guia para adicionar funcionalidades
-- 🧪 **[REFATORACAO-SIMPLES.md](REFATORACAO-SIMPLES.md)** - Guia rápido para implementar testes
-- 📝 **[GUIA-REFATORACAO-TESTES.md](GUIA-REFATORACAO-TESTES.md)** - Guia completo de refatoração com testes
-
-## 🧪 Implementando Testes
-
-Para transformar este projeto em um sistema com testes profissionais, consulte:
-
-### 🚀 **Início Rápido com Testes**
-- **[REFATORACAO-SIMPLES.md](REFATORACAO-SIMPLES.md)** - Guia prático de 21 minutos para começar com testes
-- Implementação de testes de unidade básicos
-- Configuração de testes de persistência
-- Exemplos práticos e simples
-
-### 📖 **Guia Completo de Refatoração**
-- **[GUIA-REFATORACAO-TESTES.md](GUIA-REFATORACAO-TESTES.md)** - Documentação completa para refatoração profissional
-- Estrutura de solução (.sln) com múltiplos projetos
-- Testes de unidade, integração e request
-- Boas práticas e padrões de teste
-
 ## 📈 Melhorias Futuras
 
 - 🔄 **Refresh Token** automático
